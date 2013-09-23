@@ -184,7 +184,13 @@ int getByte(int x, int n) {
  *   Rating: 2
  */
 int fitsBits(int x, int n) {
-  return !(x >> n);
+  int remaining;
+  int removed;
+
+  remaining = 33 + ~n;
+  removed = (x << remaining) >> remaining;
+
+  return !(removed ^ x);
 }
 /*
  * divpwr2 - Compute x/(2^n), for 0 <= n <= 30
