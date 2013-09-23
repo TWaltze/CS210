@@ -187,9 +187,17 @@ int fitsBits(int x, int n) {
   int remaining;
   int removed;
 
+  // Find the number of bits left after using n bits
   remaining = 33 + ~n;
+
+  // Take whatever is allowed to be left and
+  // move them off x's bit stack. Then move them back
+  // on as zeros.
   removed = (x << remaining) >> remaining;
 
+  // Check that removed is still the same number as x.
+  // If not, then there were more significant bits of
+  // x than were allowed (remaining).
   return !(removed ^ x);
 }
 /*
