@@ -168,7 +168,7 @@ int tmin(void) {
  *   Rating: 2
  */
 int getByte(int x, int n) {
-  return (x >> (n << 2)) & 0xFF;
+  return (x >> (n << 3)) & 0xFF;
 }
 /*
  * fitsBits - return 1 if x can be represented as an
