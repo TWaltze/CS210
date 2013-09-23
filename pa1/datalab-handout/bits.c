@@ -168,6 +168,10 @@ int tmin(void) {
  *   Rating: 2
  */
 int getByte(int x, int n) {
+  // Convert n-bytes to bits by multiplying by 8.
+  // Use shifts to multiply by a power of 2 (2^3 = 8).
+  // Remove all bits to the left of relevant x byte.
+  // 0xFF = 0x000000FF
   return (x >> (n << 3)) & 0xFF;
 }
 /*
