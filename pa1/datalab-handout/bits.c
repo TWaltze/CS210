@@ -152,7 +152,7 @@ int bitAnd(int x, int y) {
  *   Rating: 1
  */
 int tmin(void) {
-  return 8<<16;
+  return 8<<32;
 }
 // Rating: 2
 /*
