@@ -152,6 +152,10 @@ int bitAnd(int x, int y) {
  *   Rating: 1
  */
 int tmin(void) {
+  // Minimum two's complement is 0x80000000.
+  // 8 is initially in 3rd spot (0-31), and it
+  // needs to be in the 31st spot. So move it
+  // over 28 spots to the left.
   return 8<<28;
 }
 // Rating: 2
@@ -164,7 +168,7 @@ int tmin(void) {
  *   Rating: 2
  */
 int getByte(int x, int n) {
-  return 2;
+  return (x >> (n << 2)) & 0xFF;
 }
 /*
  * fitsBits - return 1 if x can be represented as an
