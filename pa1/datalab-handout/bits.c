@@ -337,5 +337,11 @@ int isLessOrEqual(int x, int y) {
  *   Rating: 4
  */
 int bang(int x) {
-  return 2;
+  int complement;
+
+  complement = ~x + 1;
+
+  // If x != 0, then the left most bit of x or -x will be 1.
+  // OR x and -x and check that it's > 0.
+  return (x >> 31) | (complement >> 31);
 }
