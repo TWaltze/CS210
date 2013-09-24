@@ -326,7 +326,7 @@ int isLessOrEqual(int x, int y) {
   // If so, the difference will be positive,
   // meaning the far left will be 0. Move that
   // left most to right most.
-  lessThan = difference & (1 << 31);
+  lessThan = (difference & (1 << 31)) >> 31;
   printf("%d < %d? %d\n\n", y, x, lessThan);
 
   //
