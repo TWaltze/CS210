@@ -285,10 +285,12 @@ int isPositive(int x) {
 
   // Create a mask of all 1's
   mask = ~0;
+  printf("mask=%d\n", mask);
 
   // Only care about x's left most bit:
   // 0 for positive, 1 for negative
   x = (x >> 31) << 31;
+  printf("x=%d\n", x);
 
   // Compare the left most bits of mask and x.
   // If both are 1, x is negative and return false.
