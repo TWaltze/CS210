@@ -292,7 +292,7 @@ int isPositive(int x) {
   sign = x & mask;
 
   // Fanciness for the specialness that is 0.
-  // goal is to just make sure both negative numbers
+  // Goal is to just make sure both negative numbers
   // and 0 have a 1 in their bits, while positive
   // numbers have all 0's.
   x = (x + ~1 + 1) & mask;
@@ -308,7 +308,10 @@ int isPositive(int x) {
  *   Rating: 3
  */
 int isLessOrEqual(int x, int y) {
-  return 2;
+  // Flip x, add one to negate x (y - x).
+  // Shift right and check the sign. If 0,
+  // it's postive (or 0), and x <= y.
+  return !(~x + 1 + y >> 31);
 }
 // Rating: 4
 /*
