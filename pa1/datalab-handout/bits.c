@@ -318,8 +318,8 @@ int isLessOrEqual(int x, int y) {
   // Move sign to the right. If y < x,
   // the difference should be positive
   // (0 at leftmost).
-  lessThan = !!(difference >> 31);
-  printf("%d < %d? %d\n", x, y, lessThan);
+  lessThan = !(difference >> 31);
+  printf("%d <= %d? %d\n", x, y, lessThan);
 
   return lessThan;
 
