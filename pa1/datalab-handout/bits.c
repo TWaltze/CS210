@@ -291,18 +291,14 @@ int isPositive(int x) {
   // 0 for positive, 1 for negative
   sign = x & mask;
 
-  // Compare the left most bits of mask and x.
-  // If both are 1, x is negative and return false.
-  // Otherwise, return true.
-  // return mask ^ x;
+  // Fanciness for the specialness that is 0.
+  // goal is to just make sure both negative numbers
+  // and 0 have a 1 in their bits, while positive
+  // numbers have all 0's.
+  x = (x + ~1 + 1) & mask;
 
-  // Move the sign bit over to the far right for
-  // easy comparision with 0 or 1 result.
-  sign = (sign >> 31) + 1;
-
-  // Compare and flip value because sign is reversed
-  // above when moving over to right.
-  return !(sign ^ 1);
+  // Check if they have any 1's then reverse value
+  return !(x | sign);
 }
 /*
  * isLessOrEqual - if x <= y  then return 1, else return 0
