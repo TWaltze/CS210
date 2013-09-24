@@ -312,7 +312,7 @@ int isLessOrEqual(int x, int y) {
   // Shift right and check the sign. If 0,
   // it's postive (or 0), and x <= y.
   int test = ((~x + 1) + y);
-  printf("%d - %d = %d", y, x, test);
+  printf("%d - %d = %d\n", y, x, test);
 
   return !(((~x + 1) + y) >> 31);
 }
