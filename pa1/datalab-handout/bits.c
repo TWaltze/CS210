@@ -311,6 +311,9 @@ int isLessOrEqual(int x, int y) {
   // Flip x, add one to negate x (y - x).
   // Shift right and check the sign. If 0,
   // it's postive (or 0), and x <= y.
+  int test = ((~x + 1) + y);
+  printf("test=%d", test);
+
   return !(((~x + 1) + y) >> 31);
 }
 // Rating: 4
