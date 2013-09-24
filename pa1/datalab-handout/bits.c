@@ -247,9 +247,12 @@ int negate(int x) {
 int logicalShift(int x, int n) {
   int mask;
 
+  // Do an arithmetic right shift
   x = x >> n;
 
-  // Build mask
+  // Build basic mask of 0 followed by 1's. If its
+  // leftmost wasn't 0, we'd get a bunch of 1's instead
+  // of 0's from the arithmetic right shift.
   mask = 0x7f;
   mask = mask << 8;
   mask = mask + 0xff;
@@ -257,7 +260,13 @@ int logicalShift(int x, int n) {
   mask = mask + 0xff;
   mask = mask << 8;
   mask = mask + 0xff;
+
+  // Shift right by n to create a mask of all 0's
+  // where the above arithmetic right shift may have
+  // created 1's.
   mask = mask >> n;
+
+  // Compensate
   mask = mask << 1;
   mask = mask + 1;
 
