@@ -214,10 +214,10 @@ int divpwr2(int x, int n) {
   int mask;
   int compensator;
 
-  // Subtract one (necessary for the extra one)
+  // Mask to subtract extra bit (for the extra 1)
   mask = (1 << n) + ~0;
 
-  // Hold a right most 1 (negative) or 0 (positive).
+  // Hold a right most 1 (negative x) or 0 (positive x).
   compensator = (x >> 31) & mask;
 
   // Add the right most 1 or 0 and then do normal
@@ -232,7 +232,8 @@ int divpwr2(int x, int n) {
  *   Rating: 2
  */
 int negate(int x) {
-  return 2;
+  // Do steps to produce two's completment (flip, plus 1)
+  return ~x + 1;
 }
 // Rating: 3
 /*
