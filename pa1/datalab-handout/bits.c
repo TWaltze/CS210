@@ -289,14 +289,19 @@ int isPositive(int x) {
 
   // Only care about x's left most bit:
   // 0 for positive, 1 for negative
-  sign = (x >> 31) << 31;
+  sign = x & mask;
 
   // Compare the left most bits of mask and x.
   // If both are 1, x is negative and return false.
   // Otherwise, return true.
   // return mask ^ x;
 
-  return !(x & mask);
+  // Move the sign bit over to the far right for
+  // easy comparision with 0 or 1 result.
+  sign = sign >> 31 + 1;
+  printf("sign=%d", sign);
+
+  return sign ^ 1;
 }
 /*
  * isLessOrEqual - if x <= y  then return 1, else return 0
