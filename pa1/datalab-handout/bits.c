@@ -342,6 +342,8 @@ int bang(int x) {
   complement = ~x + 1;
 
   // If x != 0, then the left most bit of x or -x will be 1.
-  // OR x and -x and check that it's > 0.
-  return (x >> 31) | (complement >> 31);
+  // Shift it to the right most and mask everything else.
+  // This will leave either complement or x looking like 0x01.
+  // OR x and complement and check that it's > 0.
+  return ((x >> 31) & 0x01) | ((complement >> 31) & 0x01);
 }
