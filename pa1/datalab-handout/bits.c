@@ -331,7 +331,8 @@ int isLessOrEqual(int x, int y) {
 
   // Flip the less than because it's checking that
   // y < x and we want the opposite.
-  return equal | !lessThan;
+  // return equal | !lessThan;
+  return !((y + (~x + 1)) >> 31);
 }
 // Rating: 4
 /*
