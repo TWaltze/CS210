@@ -298,7 +298,7 @@ int isPositive(int x) {
 
   // Move the sign bit over to the far right for
   // easy comparision with 0 or 1 result.
-  sign = sign >> 31 + 1;
+  sign = (sign >> 31) + 1;
   printf("sign=%d", sign);
 
   return sign ^ 1;
