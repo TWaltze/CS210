@@ -245,7 +245,7 @@ int negate(int x) {
  *   Rating: 3
  */
 int logicalShift(int x, int n) {
-  return 2;
+  return x >> n;
 }
 /*
  * isPositive - return 1 if x > 0, return 0 otherwise
