@@ -245,7 +245,24 @@ int negate(int x) {
  *   Rating: 3
  */
 int logicalShift(int x, int n) {
-  return x >> n;
+  int mask;
+
+  x = x >> n;
+
+  // Build mask
+  mask = 0x7f;
+  mask = mask << 8;
+  mask = mask + 0xff;
+  mask = mask << 8;
+  mask = mask + 0xff;
+  mask = mask << 8;
+  mask = mask + 0xff;
+  mask = mask >> n;
+  mask = mask << 1;
+  mask = mask + 1;
+
+  // Apply mask to remove any trailing 1's.
+  return x & mask;
 }
 /*
  * isPositive - return 1 if x > 0, return 0 otherwise
