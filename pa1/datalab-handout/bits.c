@@ -308,29 +308,21 @@ int isPositive(int x) {
  *   Rating: 3
  */
 int isLessOrEqual(int x, int y) {
-  int difference;
-  int equal;
-  int lessThan;
+  int x_sign;
+  int y_sing;
+  int combined;
+  int override_byte;
+  int z;
 
-  // x - y (add y's complement to x)
-  difference = x + (~y + 1);
-  printf("%d - %d = %d\n", x, y, difference);
+  x_sign = x >> 31;
+  y_sign = y >> 31;
 
-  // x == y
-  // If they are, the difference will be 0, the
-  // opposite of which is 1, which is true.
-  equal = !difference;
-  printf("%d == %d? %d\n", x, y, equal);
+  comb_sign_xy = x_sign ^ y_sign;
+  override_byte = comb_sign_xy & x_sign;
 
-  // y < x
-  // If so, the difference will be positive,
-  // meaning the far left will be 0. Move that
-  // left most to right most.
-  lessThan = (difference & (1 << 31)) >> 31;
-  printf("%d < %d? %d\n\n", y, x, lessThan);
+  z = ((y + (~x) + 1)) >> 31;
 
-  //
-  return equal | lessThan;
+  return !((z | comb_sign_xy) ^ override_byte);
 }
 // Rating: 4
 /*
