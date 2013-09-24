@@ -327,11 +327,11 @@ int isLessOrEqual(int x, int y) {
   // meaning the far left will be 0. Move that
   // left most to right most.
   lessThan = difference >> 31;
-  printf("%d <= %d? %d\n", x, y, lessThan);
+  printf("%d < %d? %d\n", x, y, lessThan);
 
-  // This might actually return the opposite
-  // of what I want.
-  return equal | lessThan;
+  // Flip the less than because it's checking that
+  // y < x and we want the opposite.
+  return equal | !lessThan;
 }
 // Rating: 4
 /*
