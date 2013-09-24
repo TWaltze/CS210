@@ -309,18 +309,27 @@ int isPositive(int x) {
  */
 int isLessOrEqual(int x, int y) {
   int difference;
+  int lessThan;
 
-  // x - y
+  // x - y (add y's complement to x)
   difference = x + (~y + 1);
   printf("%d - %d = %d\n", x, y, difference);
+
+  // Move sign to the right. If y < x,
+  // the difference should be positive
+  // (0 at leftmost).
+  lessThan = !!(difference >> 31);
+  printf("%d < %d? %d\n", x, y, lessThan);
+
+  return lessThan;
 
   // Flip x, add one to negate x (y - x).
   // Shift right and check the sign. If 0,
   // it's postive (or 0), and x <= y.
-  int test = ((~x + 1) + y);
+  // int test = ((~x + 1) + y);
   // printf("%d - %d = %d\n", y, x, test);
 
-  return !(((~x + 1) + y) >> 31);
+  // return !(((~x + 1) + y) >> 31);
 }
 // Rating: 4
 /*
