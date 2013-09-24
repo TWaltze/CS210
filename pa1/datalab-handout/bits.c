@@ -299,9 +299,10 @@ int isPositive(int x) {
   // Move the sign bit over to the far right for
   // easy comparision with 0 or 1 result.
   sign = (sign >> 31) + 1;
-  printf("sign=%d", sign);
 
-  return sign ^ 1;
+  // Compare and flip value because sign is reversed
+  // above when moving over to right.
+  return !(sign ^ 1);
 }
 /*
  * isLessOrEqual - if x <= y  then return 1, else return 0
