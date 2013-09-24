@@ -209,7 +209,20 @@ int fitsBits(int x, int n) {
  *   Rating: 2
  */
 int divpwr2(int x, int n) {
-    return x >> n;
+  // x >> n won't work with signed integers.
+  // Must account for "extra" 1-bit when negative.
+  int mask;
+  int compensator;
+
+  // Subtract one (necessary for the extra one)
+  mask = (1 << n) + ~0;
+
+  // Hold a right most 1 (negative) or 0 (positive).
+  compensator = (x >> 31) & mask;
+
+  // Add the right most 1 or 0 and then do normal
+  // right shift division.
+  return (x + compensator) >> n;
 }
 /*
  * negate - return -x
