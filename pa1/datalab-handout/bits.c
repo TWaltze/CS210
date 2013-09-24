@@ -282,20 +282,21 @@ int logicalShift(int x, int n) {
  */
 int isPositive(int x) {
   int mask;
+  int sign;
 
-  // Create a mask of all 1's
-  mask = ~0;
-  printf("mask=%d\n", mask);
+  // Create a mask of all 1 followed by 0's
+  mask = 1 << 31;
 
   // Only care about x's left most bit:
   // 0 for positive, 1 for negative
-  x = (x >> 31) << 31;
-  printf("x=%d\n", x);
+  sign = (x >> 31) << 31;
 
   // Compare the left most bits of mask and x.
   // If both are 1, x is negative and return false.
   // Otherwise, return true.
-  return mask ^ x;
+  // return mask ^ x;
+
+  return !(x & mask);
 }
 /*
  * isLessOrEqual - if x <= y  then return 1, else return 0
