@@ -308,11 +308,17 @@ int isPositive(int x) {
  *   Rating: 3
  */
 int isLessOrEqual(int x, int y) {
+  int difference;
+
+  // x - y
+  difference = x + (~y + 1);
+  printf("%d - %d = %d\n", x, y, difference);
+
   // Flip x, add one to negate x (y - x).
   // Shift right and check the sign. If 0,
   // it's postive (or 0), and x <= y.
   int test = ((~x + 1) + y);
-  printf("%d - %d = %d\n", y, x, test);
+  // printf("%d - %d = %d\n", y, x, test);
 
   return !(((~x + 1) + y) >> 31);
 }
