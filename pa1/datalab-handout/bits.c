@@ -310,19 +310,23 @@ int isPositive(int x) {
 int isLessOrEqual(int x, int y) {
   int x_sign;
   int y_sign;
+  int diff_sign;
+
   int combined;
   int override_byte;
-  int z;
 
+  // Find signs of x and y
   x_sign = x >> 31;
   y_sign = y >> 31;
 
+  // y - x, then find sign of difference
+  diff_sign = ((y + (~x) + 1)) >> 31;
+
+  // Help with overflow
   combined = x_sign ^ y_sign;
   override_byte = combined & x_sign;
 
-  z = ((y + (~x) + 1)) >> 31;
-
-  return !((z | combined) ^ override_byte);
+  return !((diff_sign | combined) ^ override_byte);
 }
 // Rating: 4
 /*
