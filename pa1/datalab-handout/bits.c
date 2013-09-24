@@ -309,7 +309,7 @@ int isPositive(int x) {
  */
 int isLessOrEqual(int x, int y) {
   int x_sign;
-  int y_sing;
+  int y_sign;
   int combined;
   int override_byte;
   int z;
@@ -317,12 +317,12 @@ int isLessOrEqual(int x, int y) {
   x_sign = x >> 31;
   y_sign = y >> 31;
 
-  comb_sign_xy = x_sign ^ y_sign;
-  override_byte = comb_sign_xy & x_sign;
+  combined = x_sign ^ y_sign;
+  override_byte = combined & x_sign;
 
   z = ((y + (~x) + 1)) >> 31;
 
-  return !((z | comb_sign_xy) ^ override_byte);
+  return !((z | combined) ^ override_byte);
 }
 // Rating: 4
 /*
