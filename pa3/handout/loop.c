@@ -59,7 +59,9 @@ loop(int count, struct machine *m)
     TRACE_LOOP(dump_cpu(m));
     rc = interrupts(m);
 
-    put your code here
+    if(rc) { rc = fetch(m); }
+    if(rc) { rc = decode(m); }
+    if(rc) { rc = execute(m); }
 
     i++;
     if (rc < 0 || (count && i == count)) break;
