@@ -109,10 +109,11 @@ static int
 inst_am_imm(struct AddressingModeDesc *mode, struct machine *m)
 {
 
+  m->cpu.abr = m->cpu.reg.pc + 1;
+  m->cpu.reg.pc += 2;
 
 
-
- NYI; assert(0);
+ // NYI; assert(0);
 
 
   return 1;
