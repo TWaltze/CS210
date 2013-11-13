@@ -79,8 +79,8 @@ static int
 inst_am_absx(struct AddressingModeDesc *mode, struct machine *m)
 {
 
-  ADDR_SET_LOW(m->cpu.abr, mem_get(m->cpu.reg.pc + 1)); // ADL
-  ADDR_SET_HIGH(m->cpu.abr, mem_get(m->cpu.reg.pc + 2));  // ADH
+  ADDR_SET_LOW(m->cpu.abr, mem_get(m, m->cpu.reg.pc + 1)); // ADL
+  ADDR_SET_HIGH(m->cpu.abr, mem_get(m, m->cpu.reg.pc + 2));  // ADH
 
 
 
