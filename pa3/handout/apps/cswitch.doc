@@ -1,0 +1,16 @@
+
+
+	;; A task is described by some code, data and stack area
+	;; A context is used to describe the state of a task so that
+	;; we can switch between them.
+
+	;; Given the small hardware defined STACK memory the number of
+	;; TASKS we support is limited by how big we want to make each
+	;; tasks stack we will support 64 bytes of stack for each task
+	;; so the maximum number of tasks is STACK_SIZE/64 which is
+	;; 4
+
+	;; we will dedicate the second page of memory to storing the
+	;; context descriptor array
+
+	;; TASK MEMORY STARTS AT $0300 and GOES UPTO and including $FBFF
